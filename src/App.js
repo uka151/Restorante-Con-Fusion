@@ -17,13 +17,7 @@ class App extends Component{
     <div >
       <Navbar dark color="danger">
       <div className="container">
-        <NavbarBrand href="/">Restorant Confusion</NavbarBrand>
-        <NavbarBrand href="/">Home</NavbarBrand>
-        <NavbarBrand href="/">MenuList</NavbarBrand>
-        <NavbarBrand href="/">About Us</NavbarBrand>
-        <NavbarBrand href="/">ADD Cart</NavbarBrand>
-        
-        
+        <NavbarBrand href="/">Restorant Confusion</NavbarBrand>  
       </div></Navbar>
       <Menu dishes={this.state.dishes}/>
       </div>
