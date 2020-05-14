@@ -1,21 +1,35 @@
 import React,{Component} from 'react';
 import {Navbar, NavbarBrand} from 'reactstrap';
 import Menu from './MenuComponent';
-import DishDetail from './DishdetailComponent';
+
 import {DISHES} from '../shared/dishes';
+import DishDetail from './DishdetailComponent';
 
 class Main extends Component{
   constructor(props){
     super(props);
     this.state ={
       dishes:DISHES,
-      selectedDish:null
+      selectDish:null
     };
   }
+  onDishSelect(dishID){
+  this.setState({selectDish:dishID});
+  }
 
-  onDishSelect(dishId){
-    this.setState({selectedDish:dishId});
-}
+renderDishDetail(dishid){
+  if(dishid!=null){
+  return(
+    <div>
+      <DishDetail dishe={this.state.dishes.filter((dish)=>dish.id===this.state.selectDish)[0]}/>
+    </div>
+  )
+}else{
+  return(
+    <div></div>
+  )
+}}
+ 
   render(){
   return (
     <div >
@@ -24,11 +38,8 @@ class Main extends Component{
         <NavbarBrand href="/">Restorant Confusion</NavbarBrand>  
       </div></Navbar>
       <Menu dishes={this.state.dishes}
-      onClick={(dishId)=>this.props.onDishSelect(dishId)}
-      />
-       <DishDetail    
-      dish={this.state.dishes.filter((dish)=>dish.id===this.state.selectedDish )[0]}/>
-     
+      onClick={(dishId)=>this.onDishSelect(dishId)}/>
+        {this.renderDishDetail(this.state.selectDish)}
       </div>
   );
 }}

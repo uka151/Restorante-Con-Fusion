@@ -61,3 +61,6 @@ render(){
     
 }
 export default Menu;
+
+<DishDetail    
+         dishe={this.state.dishes.filter((dish)=>dish.id===this.state.selectedDish )[0]}/>
