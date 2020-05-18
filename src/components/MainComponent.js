@@ -1,9 +1,9 @@
 import React,{Component} from 'react';
-import {Navbar, NavbarBrand} from 'reactstrap';
 import Menu from './MenuComponent';
-
+import Header from './HeaderComponent';
 import {DISHES} from '../shared/dishes';
 import DishDetail from './DishdetailComponent';
+import Footer from './FooterComponent';
 
 class Main extends Component{
   constructor(props){
@@ -33,13 +33,11 @@ renderDishDetail(dishid){
   render(){
   return (
     <div >
-      <Navbar dark color="danger">
-      <div className="container">
-        <NavbarBrand href="/">Restorant Confusion</NavbarBrand>  
-      </div></Navbar>
+       <Header/>
       <Menu dishes={this.state.dishes}
       onClick={(dishId)=>this.onDishSelect(dishId)}/>
         {this.renderDishDetail(this.state.selectDish)}
+        <Footer/>
       </div>
   );
 }}
