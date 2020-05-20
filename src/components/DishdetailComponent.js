@@ -8,7 +8,7 @@ class DishDetail  extends Component{
      return (
          <div key={dish.id} className="col-12 col-md-5 m-1">
         <Card>
-        <CardImg width="100%" src={dish.image} alt={dish.name}/>
+        <CardImg width="80%" src={dish.image} alt={dish.name}/>
         <CardBody>
        <CardTitle>{dish.name}</CardTitle>
        <CardText>{dish.description}</CardText>
@@ -17,21 +17,18 @@ class DishDetail  extends Component{
         </div>
      )
  };
- renderComments(){
-     const comment = this.props.dishe.comments.map((dis)=>{
-         return (
-             <div key={dis.key}> 
-                 <ul className="list-unstyle">
-                     <p>{dis.comment}</p>
-                     <p>-- {dis.author}, {dis.date}</p>
-                 </ul> 
-             </div>
-         )
-     })
+ renderComments(com){
+     
+ 
      return(
          <div className="col-12 col-md-5 m-1"> 
         <h4>Comments</h4>
-          {comment}
+        <div key={com.key}> 
+        <ul className="list-unstyle">
+            <p>{com.comment}</p>
+            <p>-- {com.author}, {com.date}</p>
+        </ul> 
+    </div>
          </div>
      )
  } 
@@ -41,7 +38,7 @@ class DishDetail  extends Component{
         return(
             <div className="row">      
             {this.renderDish(this.props.dishe)}
-            {this.renderComments()}
+            {this.renderComments(this.props.comm)}
             </div>    
     
         )
