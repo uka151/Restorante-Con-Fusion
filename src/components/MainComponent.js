@@ -40,7 +40,9 @@ renderDishDetail(dishid){
   return(
     <div></div>
   )
-}}
+}};
+
+
 
  
   render(){
