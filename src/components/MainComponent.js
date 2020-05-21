@@ -25,27 +25,23 @@ class Main extends Component{
   }
   onDishSelect(dishID){
   this.setState({selectDish:dishID});
-  }
+  };
 
-renderDishDetail(dishid){
-  if(dishid!=null){
-  return(
-    <div>
-      <DishDetail dishe={this.state.dishes.filter((dish)=>dish.id===this.state.selectDish)[0]}
-         comm={this.state.comments.filter((comment)=>comment.id===this.state.selectDish)[0]}
-      />
-    </div>
-  )
-}else{
-  return(
-    <div></div>
-  )
-}};
-
+ 
 
 
  
   render(){
+    const DishWithId=({match})=>{
+      return(
+        <div className="row">
+          <div className="col-12 offset-sm-1">
+          <DishDetail dishe={this.state.dishes.filter((dish)=>dish.id===parseInt(match.params.dishId,10))[0]}
+             comm={this.state.comments.filter((comment) => comment.dishId === parseInt(match.params.dishId,10))[0]} /></div>
+   </div>
+      );
+      }
+    
     const HomePage= () =>{
       return(
         <Home 
@@ -67,10 +63,10 @@ renderDishDetail(dishid){
        <Switch>
          <Route path='/home' component={HomePage}/>
          <Route exact path='/menu' component={men}/>
-         <Route path='/contactUs' component={Contact}/>
+         <Route path='/menu/:dishId' component={DishWithId}/>
+         <Route path='/contactUs' component={Contact}/>  
          <Redirect to='/home'/>
        </Switch>
-        {this.renderDishDetail(this.state.selectDish)}
         <Footer/>
       </div>
   );
