@@ -58,9 +58,9 @@ class Main extends Component {
           onClick={(dishId) => this.onDishSelect(dishId)} />
       );
     }
-    const About =()=>{
-      return(
-      <AboutUs leader={this.state.leaders}/>);
+    const About = () => {
+      return (
+        <AboutUs leader={this.state.leaders} />);
     }
     return (
       <div >
