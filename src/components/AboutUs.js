@@ -21,7 +21,6 @@ function RenderLeader({ leader }) {
                     <Media heading>
                         {leader.name}
                     </Media>
-
                     {leader.designation}
                     <p className="pt-3">{leader.description}</p>
                 </Media>
@@ -29,9 +28,6 @@ function RenderLeader({ leader }) {
         </div>
     );
 }
-
-
-
 function Aboutus(props) {
 
     const leaders = props.leader.map((leader) => {
@@ -105,10 +101,6 @@ function Aboutus(props) {
                         </Media>
                     </div>
                 </div>
-
-
-
-
             </div>
         </div>
     );
