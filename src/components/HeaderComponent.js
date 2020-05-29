@@ -1,19 +1,37 @@
 import React, { Component } from 'react';
-import { Navbar, Jumbotron, NavbarBrand, Nav, NavbarToggler, Collapse, NavItem } from 'reactstrap';
+import { Navbar, Jumbotron, NavbarBrand, Nav, Modal, Input, Label, Form, FormGroup, ModalBody, NavbarToggler, Button, Collapse, NavItem, ModalHeader } from 'reactstrap';
 import { NavLink } from 'react-router-dom';
+import  '../App.css';
 
 class Header extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            isNavOpen: false
+            isNavOpen: false,
+            isModalOpen: false
         };
         this.toggleNav = this.toggleNav.bind(this);
+        this.toggleModal = this.toggleModal.bind(this);
+        this.handleLogin = this.handleLogin.bind(this);
 
     }
-
+//toggleNav method is used for setup the status of collaps menu & isNavOpen become true 
     toggleNav() {
         this.setState({ isNavOpen: !this.state.isNavOpen });
+    }
+ // when click on Login the isOpen method call to toggleModal function & setup the value true of isModalOpen & modal popup   
+    toggleModal() {
+        this.setState({
+            isModalOpen: !this.state.isModalOpen
+        });
+    }
+  // This method is used for handle the login status & catch the data directly from DOM which is input by user & alert the message on display  
+    handleLogin(event) {
+        this.toggleModal();
+        alert("Username is :" + this.username.value +
+            " Password is :" + this.password.value + " Remember " +
+            this.remember.checked);
+        event.preventDefault();
     }
 
 
@@ -40,6 +58,11 @@ class Header extends Component {
                                     </NavLink></NavItem>
                             </Nav>
                         </Collapse>
+                        <Nav className='ml-auto' navbar>
+                            <NavItem>
+                                <Button outline onClick={this.toggleModal}><span className="fa fa-sign-in fa-lg">Login</span></Button>
+                            </NavItem>
+                        </Nav>
                     </div>
                 </Navbar>
                 <Jumbotron>
@@ -49,8 +72,34 @@ class Header extends Component {
                                 <h1>Ristorante con Fusion</h1>
                                 <p>We take inspiration from the World's best cuisines, and create a unique fusion experience. Our lipsmacking creations will tickle your culinary senses!</p>
                             </div></div></div>
-
                 </Jumbotron>
+             
+                <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}> 
+                    <ModalHeader toggle={this.toggleModal} className="ModalLogin">
+                        Login
+                    </ModalHeader>
+                    <ModalBody className="ModalBody">
+                        <Form onSubmit={this.handleLogin}>
+                            <FormGroup>
+                                <Label>Username</Label>
+                                <Input type='text' id="username" name='username' className='InputBox'
+                                    innerRef={(input) => this.username = input} />
+                            </FormGroup>
+                            <FormGroup>
+                                <Label>Password</Label>
+                                <Input type='password' id="username" name='username' 
+                                className='InputBox'
+                                    innerRef={(input) => this.password = input} />
+                            </FormGroup>
+                            <FormGroup check>
+                                <Label check>
+                                    <Input type='checkbox' id="remember" name='remember'
+                                        innerRef={(input) => this.remember = input} />Remember me
+                        </Label>
+                            </FormGroup>
+                            <Button type="submit" value="submit" color="primary">Login</Button> </Form>
+                    </ModalBody>
+                </Modal>
 
             </React.Fragment>
         );
