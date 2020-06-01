@@ -11,6 +11,7 @@ import { PROMOTIONS } from '../shared/promotion';
 import DishDetail from './DishdetailComponent';
 import Footer from './FooterComponent';
 import { Switch, Route, Redirect } from 'react-router-dom';
+import { HOMEDISH } from '../shared/homedish';
 
 
 class Main extends Component {
@@ -21,6 +22,7 @@ class Main extends Component {
       leaders: LEADERS,
       promotions: PROMOTIONS,
       comments: COMMENTS,
+      homedish:HOMEDISH,
       selectDish: null
     };
   }
@@ -46,9 +48,9 @@ class Main extends Component {
     const HomePage = () => {
       return (
         <Home
-          dish={this.state.dishes.filter((dish) => dish.featured)[0]}
+          dish={this.state.homedish.filter((dish) => dish.featured)[0]}
           promotion={this.state.promotions.filter((promo) => promo.featured)[0]}
-          leader={this.state.leaders.filter((leader) => leader.featured)[0]}
+          men={this.state.dishes.filter((dish) => dish.featured)[0]}
         />
       );
     }

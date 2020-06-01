@@ -38,12 +38,12 @@ class Header extends Component {
     render() {
         return (
             <React.Fragment>
-                <Navbar dark expand="md">
+                <Navbar expand="md">
                     <div className="container">
                         <NavbarToggler onClick={this.toggleNav} />
-                        <NavbarBrand className='mr-auto' href='/' ><img src='../assets/images/logo.png' alt='Ristorante Con Fusion' height='30' width='41'
+                        <NavbarBrand className='mr-auto' href='/' ><img src='../assets/images/logo.png' alt='Ristorante Con Fusion' height='50' width='81'
                         /></NavbarBrand>
-                        <Collapse isOpen={this.state.isNavOpen} navbar>
+                        <Collapse isOpen={this.state.isNavOpen} id="collaps" navbar>
                             <Nav navbar>
                                 <NavItem>
                                     <NavLink className='nav-link' to='/home'><span className='fa fa-home fa-lg'>Home</span></NavLink>
@@ -59,8 +59,9 @@ class Header extends Component {
                             </Nav>
                         </Collapse>
                         <Nav className='ml-auto' navbar>
-                            <NavItem>
-                                <Button outline onClick={this.toggleModal}><span className="fa fa-sign-in fa-lg">Login</span></Button>
+                            <NavItem id="login" className="nav-link">
+                                <Button outline onClick={this.toggleModal}><span className="fa fa-sign-in fa-lg nav-link">Login</span></Button>
+                               
                             </NavItem>
                         </Nav>
                     </div>

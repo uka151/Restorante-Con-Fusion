@@ -10,7 +10,7 @@ function Footer(props) {
                     <div className="col-4 offset-1 col-sm-2">               <h5>Link</h5>
                         <ul className="list-unstyled">
                             <li><Link to='/home'>Home</Link></li>
-                            <li><Link to='/aboutus'>About Us</Link></li>
+                            <li><Link  to='/aboutus'>About Us</Link></li>
                             <li><Link to='/menu'>Menu</Link></li>
                             <li><Link to='/contactus'>Contactus</Link></li>
                         </ul>
@@ -34,7 +34,6 @@ function Footer(props) {
                             <a className="btn btn-social-icon btn-linkedin" href="http://www.linkedin.com/in/"><i className="fa fa-linkedin"></i></a>
                             <a className="btn btn-social-icon btn-twitter" href="http://twitter.com/"><i className="fa fa-twitter"></i></a>
                             <a className="btn btn-social-icon btn-google" href="http://youtube.com/"><i className="fa fa-youtube"></i></a>
-                            <a className="btn btn-social-icon" href="mailto:"><i className="fa fa-envelope-o"></i></a>
                         </div>
                     </div>
                 </div>

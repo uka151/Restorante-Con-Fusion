@@ -1,19 +1,26 @@
-.navbar-dark{
-    background-color:#512DA8;
+#navbar{
+    color:black;
+}
+.nav-link{
+    color:black;
+   text-align: center;
 }
 .jumbotron{
-    padding: 70px 30px 70px 30px;
-    background-color: #9575CD;
+   background-image:url('/assets/images/background.jpg');
     color:floralwhite;
     margin:0px auto;
-
+    height: 500px;
 }
 .footer{
-    background-color: #D1C4E9;
+    background-color:rgb(241, 241, 241);
     padding: 20px 0px 20px 0px;
     margin: 0px auto;
 
+}
 
+#Cardimg{
+    width:52%;
+    height:40%;
 }
 .row-content{
     margin:0px auto;

@@ -66,7 +66,7 @@ class Contact extends Component {
         else if (this.state.touched.lastname && lastname.length > 10)
             errors.lastname = 'lastname should be <10 characters';
 
-        const reg =new RegExp('^[0-9]+$');
+        const reg = new RegExp('^[0-9]+$');
         if (this.state.touched.telnum && !reg.test(telnum))
             errors.telnum = 'Tel. number should contain only number'
 
@@ -159,7 +159,7 @@ class Contact extends Component {
                                                 invalid={errors.lastname !== ''}
                                             />
                                             <FormFeedback>
-                                           {errors.lastname}
+                                                {errors.lastname}
                                             </FormFeedback>
                                         </Col>
                                     </FormGroup>
@@ -171,9 +171,9 @@ class Contact extends Component {
                                                 value={this.state.telnum}
                                                 onBlur={this.handleBlur('telnum')}
                                                 onChange={this.handleInputChange}
-                                                valid={errors.telnum===''}
-                                                invalid={errors.telnum!==''} />
-    <FormFeedback>{errors.telnum}</FormFeedback>
+                                                valid={errors.telnum === ''}
+                                                invalid={errors.telnum !== ''} />
+                                            <FormFeedback>{errors.telnum}</FormFeedback>
                                         </Col>
                                     </FormGroup>
                                     <FormGroup row>
@@ -184,8 +184,8 @@ class Contact extends Component {
                                                 value={this.state.email}
                                                 onBlur={this.handleBlur('email')}
                                                 onChange={this.handleInputChange}
-                                                valid={errors.email===''}
-                                                invalid={errors.email!==''} />
+                                                valid={errors.email === ''}
+                                                invalid={errors.email !== ''} />
                                         </Col>
                                     </FormGroup>
                                     <FormGroup row>
