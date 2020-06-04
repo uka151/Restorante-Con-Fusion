@@ -65,6 +65,11 @@ class Main extends Component {
       return (
         <AboutUs leader={this.props.leaders} />);
     }
+    const contact = ()=>{
+      return (
+        <Contact/>
+      )
+    }
     return (
       <div >
         <Header />
@@ -72,7 +77,7 @@ class Main extends Component {
           <Route path='/home' component={HomePage} />
           <Route exact path='/menu' component={men} />
           <Route path='/menu/:dishId' component={DishWithId} />
-          <Route path='/contactUs' component={Contact} />
+          <Route path='/contactUs' component={contact} />
           <Route path='/AboutUs' component={About} />
           <Redirect to='/home' />
         </Switch>

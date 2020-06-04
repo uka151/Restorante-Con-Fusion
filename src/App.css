@@ -17,6 +17,9 @@
     margin: 0px auto;
 
 }
+.collapse navbar-collapse{
+    color:red;
+}
 
 #Cardimg{
     width:52%;

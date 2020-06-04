@@ -35,7 +35,7 @@ class DishDetail extends Component {
                                 <h4>Status : {com.status}</h4>
                                 <h4>Type : {com.type}</h4>
                             </CardBody>
-                            <Button type="submit" className="fa fa-plus fa-lg" value="Add Item"> Add Item</Button>
+                            <Button type="submit" className="fa fa-shopping-cart fa-lg" value="Add Item"> Add to Cart</Button>
                         </div>
                     </ul>
 
