@@ -46,9 +46,6 @@ address{
     margin:0px;
     color:#0f0f0f;
 }
-.ModalLogin{
-    background-color: blueviolet;
-}
-.ModalBody{
-    background:linear-gradient(145deg, blueviolet, rgb(251, 46, 46) );
+li{
+    padding-left:10px;
 }

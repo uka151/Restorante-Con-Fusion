@@ -20,8 +20,6 @@ class DishDetail extends Component {
     };
 
     renderComments(com) {
-
-
         return (
             <div className="col-6 col-md-5 m-1">
                 <Card>
@@ -38,7 +36,6 @@ class DishDetail extends Component {
                                     <h4>Status : {com.status}</h4>
                                     <h4>Type : {com.type}</h4>
                                 </CardBody>
-
                             </div>
                         </ul>
                         <div className="Row">
@@ -49,7 +46,6 @@ class DishDetail extends Component {
                                 <CommentForm />
                             </div>
                         </div>
-
                     </div>
                 </Card>
             </div>
@@ -57,7 +53,6 @@ class DishDetail extends Component {
     }
 
     render() {
-
         return (
             <div>
                 <div className="col-12 col-sm-4 offset -1">
@@ -69,14 +64,10 @@ class DishDetail extends Component {
                     <div className="col-12 col-sm-4">
                         <h3>{this.props.dishe.name}</h3><hr />
                     </div></div>
-
                 <div className="row">
                     {this.renderDish(this.props.dishe)}
-
                     {this.renderComments(this.props.dishe)}
-
-                </div>
-
+               </div>
             </div>
         )
     };
