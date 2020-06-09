@@ -7,7 +7,7 @@ import AboutUs from './AboutUs';
 import DishDetail from './DishdetailComponent';
 import Footer from './FooterComponent';
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
-
+import {AddComment} from '../redux/ActionCreator';
 import {connect} from 'react-redux';
 
 const mapStateToprops=state=>{
@@ -19,6 +19,9 @@ const mapStateToprops=state=>{
     homedish:state.homedish,
   }
 }
+const mapDispatchToProps = dispatch=>({
+  AddComment:(dishId, rating, author, comment)=> dispatch(AddComment(dishId, rating, author, comment))
+});
 
 class Main extends Component {
   constructor(props) {
@@ -41,7 +44,10 @@ class Main extends Component {
         <div className="row">
           <div className="col-12 offset-sm-1">
             <DishDetail dishe={this.props.dishes.filter((dish) => dish.id === parseInt(match.params.dishId, 10))[0]}
-              comm={this.props.comments.filter((comment) => comment.dishId === parseInt(match.params.dishId, 10))[0]} /></div>
+              com={this.props.comments.filter((comment) => comment.dishId === parseInt(match.params.dishId, 10))[0]} 
+              comment={this.props.comments}
+              AddComment={this.props.AddComment}
+              /></div>
         </div>
       );
     }
@@ -87,4 +93,4 @@ class Main extends Component {
   }
 }
 //filter is javascript operate on each dish in array give subarray of dishes 
-export default withRouter(connect(mapStateToprops)(Main));
+export default withRouter(connect(mapStateToprops, mapDispatchToProps)(Main));

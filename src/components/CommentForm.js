@@ -20,12 +20,12 @@ class CommentForm extends Component {
     }
 
     handleSubmit(value) {
-        console.log('Current state is: ' + JSON.stringify(value));
-        alert('Current state is:' + JSON.stringify(value));
+        this.props.addComment(this.props.dishId, value.rating, value.author,value.comment);
     }
 
 
     render() {
+      
         return (
             <div>
 

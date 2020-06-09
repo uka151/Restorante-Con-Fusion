@@ -56,6 +56,7 @@ class Contact extends Component {
                             <a role="button" className="btn btn-info" href="/">
                                 <i className="fa fa-skype">Skype</i>
                             </a>
+
                             <a role="button" className="btn btn-success" href="mailto:umeshagrahari87@gmail.com"><i className="fa fa-envelope">Email</i></a>
                         </div>
                     </div>

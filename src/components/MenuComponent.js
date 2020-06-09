@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, CardImg, Breadcrumb, BreadcrumbItem, CardBody } from 'reactstrap';
+import { Card, CardImg, Breadcrumb, BreadcrumbItem, CardBody, Button } from 'reactstrap';
 import { Link } from 'react-router-dom';
 
 function MenuItemRender({ dish, onClick }) {
@@ -12,6 +12,9 @@ function MenuItemRender({ dish, onClick }) {
                 <h4>Name:  {dish.name}</h4>
                 <h4>Price:  {dish.price}</h4>
                 <h4>Status : {dish.status}</h4>
+                <div className="mr-auto ">
+                                <Button type="submit" className="fa fa-shopping-cart fa-lg" value="Add Item"> Add to Cart</Button>
+                            </div>
             </CardBody>
         </Card>
     );
