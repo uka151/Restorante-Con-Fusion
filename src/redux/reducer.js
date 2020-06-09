@@ -1,3 +1,11 @@
+// Dummy file reducer.js for learning purpose;
+
+
+// split reducer in multiple file after that combine all reducer in cofigure store .js file using combineReducer() method.
+
+
+
+/*
 import { DISHES } from '../shared/dishes';
 import { COMMENTS } from '../shared/comments';
 import { LEADERS } from '../shared/leaders';
@@ -16,4 +24,4 @@ export const initialState={
 
 export const Reducer=(state=initialState, Action)=>{
     return state;
-};
+};*/
