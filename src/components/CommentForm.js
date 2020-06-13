@@ -19,13 +19,13 @@ class CommentForm extends Component {
         this.setState({ isOpenModal: !this.state.isOpenModal });
     }
 
-    handleSubmit(value) {
-        this.props.addComment(this.props.dishId, value.rating, value.author,value.comment);
+    handleSubmit(values) {
+        this.props.addComment(this.props.dishId, values.rating, values.author, values.comment);
     }
 
 
     render() {
-      
+
         return (
             <div>
 
@@ -59,7 +59,7 @@ class CommentForm extends Component {
                             </div>
                             <div className="Row">
                                 <div className="col-12 ">
-                                    <Control.text model='.yourName' className="form-control" id="yourName" name="yourName" placeholder='Your Name'
+                                    <Control.text model='.yourName' className="form-control" name="yourName" placeholder='Your Name'
                                         validators={{
                                             required,
                                             minLength: minLength(3),

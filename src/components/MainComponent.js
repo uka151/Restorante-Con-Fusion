@@ -7,20 +7,24 @@ import AboutUs from './AboutUs';
 import DishDetail from './DishdetailComponent';
 import Footer from './FooterComponent';
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
-import {AddComment} from '../redux/ActionCreator';
-import {connect} from 'react-redux';
+import { addComment, fetchDishes } from '../redux/ActionCreator';
+import { connect } from 'react-redux';
 
-const mapStateToprops=state=>{
+const mapStateToProps = state => {
   return {
-    dishes:state.dishes,
-    leaders:state.leaders,
+    dishes: state.dishes,
+    leaders: state.leaders,
     promotions: state.promotions,
     comments: state.comments,
-    homedish:state.homedish,
+    homedish: state.homedish,
   }
-}
-const mapDispatchToProps = dispatch=>({
-  AddComment:(dishId, rating, author, comment)=> dispatch(AddComment(dishId, rating, author, comment))
+};
+const mapDispatchToProps = (dispatch) => ({
+
+  addComment: (dishId, rating, author, comment) => dispatch(addComment(dishId, rating, author, comment))
+  ,
+  fetchDishes: () => { dispatch(fetchDishes()) }
+
 });
 
 class Main extends Component {
@@ -34,7 +38,9 @@ class Main extends Component {
     this.setState({ selectDish: dishID });
   };
 
-
+componentDidMount(){
+  this.props.fetchDishes();
+}
 
 
 
@@ -44,10 +50,9 @@ class Main extends Component {
         <div className="row">
           <div className="col-12 offset-sm-1">
             <DishDetail dishe={this.props.dishes.filter((dish) => dish.id === parseInt(match.params.dishId, 10))[0]}
-              com={this.props.comments.filter((comment) => comment.dishId === parseInt(match.params.dishId, 10))[0]} 
-              comment={this.props.comments}
-              AddComment={this.props.AddComment}
-              /></div>
+              com={this.props.comments.filter((comment) => comment.dishId === parseInt(match.params.dishId, 10))}
+              addComment={this.props.addComment}
+            /></div>
         </div>
       );
     }
@@ -71,9 +76,9 @@ class Main extends Component {
       return (
         <AboutUs leader={this.props.leaders} />);
     }
-    const contact = ()=>{
+    const contact = () => {
       return (
-        <Contact/>
+        <Contact />
       )
     }
     return (
@@ -93,4 +98,4 @@ class Main extends Component {
   }
 }
 //filter is javascript operate on each dish in array give subarray of dishes 
-export default withRouter(connect(mapStateToprops, mapDispatchToProps)(Main));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Main));
