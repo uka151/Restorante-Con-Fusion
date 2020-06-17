@@ -62,7 +62,7 @@ componentDidMount(){
         <Home
           dish={this.props.homedish.filter((dish) => dish.featured)[0]}
           promotion={this.props.promotions.filter((promo) => promo.featured)[0]}
-          men={this.props.dishes.filter((dish) => dish.featured)[0]}
+         
         />
       );
     }
