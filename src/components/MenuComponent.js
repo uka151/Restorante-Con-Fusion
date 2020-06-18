@@ -1,6 +1,7 @@
 import React from 'react';
 import { Card, CardImg, Breadcrumb, BreadcrumbItem, CardBody, Button } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import {Loading} from './LoadingComponent';
 
 function MenuItemRender({ dish, onClick }) {
     return (
@@ -13,8 +14,8 @@ function MenuItemRender({ dish, onClick }) {
                 <h4>Price:  {dish.price}</h4>
                 <h4>Status : {dish.status}</h4>
                 <div className="mr-auto ">
-                                <Button type="submit" className="fa fa-shopping-cart fa-lg" value="Add Item"> Add to Cart</Button>
-                            </div>
+                    <Button type="submit" className="fa fa-shopping-cart fa-lg" value="Add Item"> Add to Cart</Button>
+                </div>
             </CardBody>
         </Card>
     );
@@ -22,6 +23,7 @@ function MenuItemRender({ dish, onClick }) {
 
 
 const Menu = (props) => {
+
     const menu = props.dishes.map((dish) => {
         return (
             <div key={dish.id} className="col-12 col-md-5 m-1">
@@ -29,6 +31,28 @@ const Menu = (props) => {
             </div>
         )
     });
+    
+    if (props.dishes.isLoading) {
+        return(
+            <div className="container">
+                <div className="row">            
+                    <Loading />
+                </div>
+            </div>
+        );
+    }
+    else if (props.dishes.errMess) {
+        return(
+            <div className="container">
+                <div className="row"> 
+                    <div className="col-12">
+                        <h4>{props.dishes.errMess}</h4>
+                    </div>
+                </div>
+            </div>
+        );
+    }
+    else{
     return (
         <div className="container">
             <div className="row">
@@ -48,7 +72,7 @@ const Menu = (props) => {
             </div>
         </div>
     );
-}
+}}
 
 
 

@@ -51,6 +51,8 @@ componentDidMount(){
           <div className="col-12 offset-sm-1">
             <DishDetail dishe={this.props.dishes.filter((dish) => dish.id === parseInt(match.params.dishId, 10))[0]}
               com={this.props.comments.filter((comment) => comment.dishId === parseInt(match.params.dishId, 10))}
+              isLoading={this.props.dishes.isLoading}
+              errMess={this.props.dishes.errMess}
               addComment={this.props.addComment}
             /></div>
         </div>
@@ -61,8 +63,9 @@ componentDidMount(){
       return (
         <Home
           dish={this.props.homedish.filter((dish) => dish.featured)[0]}
-          promotion={this.props.promotions.filter((promo) => promo.featured)[0]}
-         
+          dishesLoading={this.props.dishes.isLoading}
+          dishesErrMess={this.props.dishes.errMess}
+          promotion={this.props.promotions.filter((promo) => promo.featured)[0]}        
         />
       );
     }
