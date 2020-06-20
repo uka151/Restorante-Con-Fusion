@@ -34,13 +34,14 @@ class Main extends Component {
       selectDish: null
     };
   }
+  componentDidMount() {
+    this.props.fetchDishes();
+  }
   onDishSelect(dishID) {
     this.setState({ selectDish: dishID });
   };
 
-componentDidMount(){
-  this.props.fetchDishes();
-}
+
 
 
 
@@ -49,10 +50,8 @@ componentDidMount(){
       return (
         <div className="row">
           <div className="col-12 offset-sm-1">
-            <DishDetail dishe={this.props.dishes.filter((dish) => dish.id === parseInt(match.params.dishId, 10))[0]}
+            <DishDetail dishe={this.props.dishes.dishes.filter((dish) => dish.id === parseInt(match.params.dishId, 10))[0]}
               com={this.props.comments.filter((comment) => comment.dishId === parseInt(match.params.dishId, 10))}
-              isLoading={this.props.dishes.isLoading}
-              errMess={this.props.dishes.errMess}
               addComment={this.props.addComment}
             /></div>
         </div>
@@ -63,36 +62,21 @@ componentDidMount(){
       return (
         <Home
           dish={this.props.homedish.filter((dish) => dish.featured)[0]}
-          dishesLoading={this.props.dishes.isLoading}
-          dishesErrMess={this.props.dishes.errMess}
-          promotion={this.props.promotions.filter((promo) => promo.featured)[0]}        
+          promotion={this.props.promotions.filter((promo) => promo.featured)[0]}
         />
       );
     }
-    const men = () => {
-      return (
-        <Menu dishes={this.props.dishes}
-          onClick={(dishId) => this.onDishSelect(dishId)} />
-      );
-    }
-    const About = () => {
-      return (
-        <AboutUs leader={this.props.leaders} />);
-    }
-    const contact = () => {
-      return (
-        <Contact />
-      )
-    }
+
+
     return (
       <div >
         <Header />
         <Switch>
           <Route path='/home' component={HomePage} />
-          <Route exact path='/menu' component={men} />
+          <Route exact path='/menu' component={() => <Menu dishes={this.props.dishes} />} />
           <Route path='/menu/:dishId' component={DishWithId} />
-          <Route path='/contactUs' component={contact} />
-          <Route path='/AboutUs' component={About} />
+          <Route path='/contactUs' component={() => <Contact />} />
+          <Route path='/AboutUs' component={() => <AboutUs leader={this.props.leaders} />} />
           <Redirect to='/home' />
         </Switch>
         <Footer />

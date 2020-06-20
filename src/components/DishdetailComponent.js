@@ -3,6 +3,7 @@ import { Card, CardImg, CardBody, Breadcrumb, Button, BreadcrumbItem, CardTitle 
 import { Link } from 'react-router-dom';
 
 import CommentForm from '../components/CommentForm';
+import { Loading } from './LoadingComponent';
 
 
 
@@ -70,6 +71,19 @@ class DishDetail extends Component {
             )
 
         })
+     if(this.props.isLoading){
+          return(
+              <div>
+                  <Loading/>
+              </div>
+          )
+     }else if(this.props.errMess){
+         return(
+             <div>
+     <h4>{this.props.errMess}</h4>
+             </div>
+         )
+     }else
 
         return (
             <div>
