@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Card, CardImg, CardBody, Breadcrumb, Button, BreadcrumbItem, CardTitle } from 'reactstrap';
 import { Link } from 'react-router-dom';
-
+import {baseUrl} from '../shared/baseUrl';
 import CommentForm from '../components/CommentForm';
 import { Loading } from './LoadingComponent';
 
@@ -17,7 +17,7 @@ class DishDetail extends Component {
             <div key={dish.id} className="col-6 col-md-5 m-1">
                 <Card>
                     <CardBody center>
-                        <CardImg id="Cardimg" src={dish.image} alt={dish.name} /></CardBody>
+                        <CardImg id="Cardimg" src={baseUrl + dish.image} alt={dish.name} /></CardBody>
                 </Card>
             </div>
         )
