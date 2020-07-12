@@ -8,8 +8,10 @@ export const Homedish=(state=
 
     }, action)=>{
     switch(action.type){
+    case ActionTypes.ADD_HOMEDISH:
+        return {...state, errMess:null, homedish:action.payload}    
     case ActionTypes.HOMEDISH_LOADING:
-         return {...state, errMess:null, homedish:action.payload}
+         return {...state, errMess:null, homedish:[]}
     case ActionTypes.HOMEDISH_FAILED:
          return{...state, errMess:action.payload}
          default :

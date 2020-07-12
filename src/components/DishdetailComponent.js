@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Card, CardImg, CardBody, Breadcrumb, Button, BreadcrumbItem, CardTitle } from 'reactstrap';
 import { Link } from 'react-router-dom';
-import {baseUrl} from '../shared/baseUrl';
+import { baseUrl } from '../shared/baseUrl';
 import CommentForm from '../components/CommentForm';
 import { Loading } from './LoadingComponent';
 
@@ -53,7 +53,7 @@ class DishDetail extends Component {
             </div>
         )
     };
-    renderCommentOnly(comments, addComment, dishId) {
+    renderCommentOnly(comments, postComment, dishId) {
         const comment = comments.map((dish) => {
             return (
                 <div>
@@ -71,38 +71,38 @@ class DishDetail extends Component {
             )
 
         })
-     if(this.props.isLoading){
-          return(
-              <div>
-                  <Loading/>
-              </div>
-          )
-     }else if(this.props.errMess){
-         return(
-             <div>
-     <h4>{this.props.errMess}</h4>
-             </div>
-         )
-     }else
+        if (this.props.isLoading) {
+            return (
+                <div>
+                    <Loading />
+                </div>
+            )
+        } else if (this.props.errMess) {
+            return (
+                <div>
+                    <h4>{this.props.errMess}</h4>
+                </div>
+            )
+        } else
 
-        return (
-            <div>
-                <Card>
-                    <CardBody>
-                        <CardTitle>
-                            <h2>All Comments</h2>
-                        </CardTitle>
-                        {comment}
+            return (
+                <div>
+                    <Card>
+                        <CardBody>
+                            <CardTitle>
+                                <h2>All Comments</h2>
+                            </CardTitle>
+                            {comment}
 
-                    </CardBody>
-                    <div className="col-12 md-5 m-1">
-                        <CommentForm addComment={addComment}
-                            dishId={dishId} />
-                    </div>
+                        </CardBody>
+                        <div className="col-12 md-5 m-1">
+                            <CommentForm postComment={postComment}
+                                dishId={dishId} />
+                        </div>
 
-                </Card>
-            </div>
-        )
+                    </Card>
+                </div>
+            )
     }
 
     render() {
@@ -123,7 +123,7 @@ class DishDetail extends Component {
                     {this.renderComments(this.props.dishe)}
                 </div>
                 <div className="row ml-2">
-                    {this.renderCommentOnly(this.props.com, this.props.addComment, this.props.dishe.id)}
+                    {this.renderCommentOnly(this.props.com, this.props.postComment, this.props.dishe.id)}
 
                 </div>
 
